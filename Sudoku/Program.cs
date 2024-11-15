@@ -4,6 +4,7 @@
     {
         public static bool ValidateSudoku(int[][] grid)
         {
+            //Validation for size
             int n = grid.Length;
 
             if (n <= 0)
@@ -18,6 +19,7 @@
             int sqrtN = (int)Math.Sqrt(n);
             int[] requiredNumbers = Enumerable.Range(1, n).ToArray();
 
+            //Validation for rows and columns
             for (int i = 0; i < n; i++)
             {
                 if (!ContainsAllNumbers(grid[i], requiredNumbers) ||
@@ -25,6 +27,7 @@
                     return false;
             }
 
+            //Validation for little squares
             for (int rowStart = 0; rowStart < n; rowStart += sqrtN)
             {
                 for (int colStart = 0; colStart < n; colStart += sqrtN)
